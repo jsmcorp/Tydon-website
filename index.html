@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouge - Speak Freely With People Who Matter</title>
+    <meta name="description" content="Anonymous texting with known groups. Confess, ask, share secrets with people who matter.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #FFFFFF;
+            --color-bg-secondary: #F0F2F5;
+            --color-bg-tertiary: #FAFAFA;
+            --color-accent: #25D366;
+            --color-accent-dark: #128C7E;
+            --color-text: #1A1A1A;
+            --color-text-secondary: #6B7280;
+            --color-text-muted: #9CA3AF;
+            --color-border: #E5E7EB;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-text);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--color-accent);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.375rem 0.875rem;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-secondary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(37, 211, 102, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content h1 span {
+            color: var(--color-accent);
+        }
+
+        .hero-content .tagline {
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        .app-badges {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .app-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.5rem;
+            background: var(--color-bg-tertiary);
+            color: var(--color-text-muted);
+            border: 2px dashed var(--color-border);
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: not-allowed;
+        }
+
+        .phone-mockup {
+            position: relative;
+            width: 300px;
+            height: 600px;
+            margin: 0 auto;
+            background: var(--color-text);
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: var(--color-bg);
+            border-radius: 32px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background: var(--color-bg-secondary);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .chat-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .chat-info h4 {
+            font-size: 0.9375rem;
+            font-weight: 600;
+        }
+
+        .chat-info p {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            overflow: hidden;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 0.75rem 1rem;
+            border-radius: 16px;
+            font-size: 0.875rem;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .message.ghost {
+            align-self: flex-start;
+            background: var(--color-bg-secondary);
+            color: var(--color-text);
+            border-bottom-left-radius: 4px;
+        }
+
+        .message.ghost .sender {
+            font-size: 0.75rem;
+            color: var(--color-accent-dark);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .message.real {
+            align-self: flex-end;
+            background: var(--color-accent);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-input {
+            padding: 1rem;
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .ghost-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            background: var(--color-bg-secondary);
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .toggle-switch {
+            width: 44px;
+            height: 24px;
+            background: var(--color-accent);
+            border-radius: 9999px;
+            position: relative;
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .input-field {
+            flex: 1;
+            height: 40px;
+            background: var(--color-bg-secondary);
+            border-radius: 9999px;
+        }
+
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--color-text-secondary);
+        }
+
+        .problem {
+            background: var(--color-bg);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .problem-card {
+            padding: 2rem;
+            background: var(--color-bg-tertiary);
+            border-radius: 16px;
+            border: 1px solid var(--color-border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .problem-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--color-bg-secondary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .problem-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .problem-card p {
+            color: var(--color-text-secondary);
+            font-size: 0.9375rem;
+        }
+
+        .solution {
+            background: var(--color-bg-secondary);
+        }
+
+        .solution-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .solution-text h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-text p {
+            font-size: 1.125rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            width: 24px;
+            height: 24px;
+            background: var(--color-accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .features {
+            background: var(--color-bg);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
+        }
+
+        .feature-card.highlight {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.05) 0%, rgba(18, 140, 126, 0.05) 100%);
+            border-color: var(--color-accent);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+        }
+
+        .how-it-works {
+            background: var(--color-bg-secondary);
+        }
+
+        .steps {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 280px;
+            max-width: 320px;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .step p {
+            color: var(--color-text-secondary);
+            font-size: 0.9375rem;
+        }
+
+        .privacy {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .privacy h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .privacy > .container > p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .promise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .promise-item {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .promise-item h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-accent);
+        }
+
+        .promise-item p {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        .waitlist {
+            background: var(--color-bg);
+            padding: 6rem 2rem;
+        }
+
+        .waitlist-box {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 3rem;
+            background: var(--color-bg-tertiary);
+            border-radius: 24px;
+            border: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .waitlist-box h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .waitlist-box > p {
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .waitlist-form {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .waitlist-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.25rem;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: var(--color-bg);
+            transition: border-color 0.3s ease;
+        }
+
+        .waitlist-form input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+
+        .waitlist-form input::placeholder {
+            color: var(--color-text-muted);
+        }
+
+        .btn-primary {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            font-family: inherit;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(37, 211, 102, 0.4);
+        }
+
+        footer {
+            background: var(--color-bg-secondary);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: var(--color-accent);
+        }
+
+        footer p {
+            color: var(--color-text-secondary);
+            font-size: 0.9375rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer .company {
+            font-weight: 600;
+            color: var(--color-text);
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-container,
+            .solution-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .phone-mockup {
+                order: -1;
+                transform: scale(0.9);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 7rem 1.5rem 3rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.875rem;
+            }
+
+            .phone-mockup {
+                width: 260px;
+                height: 520px;
+                transform: scale(0.85);
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .waitlist-box {
+                padding: 2rem 1.5rem;
+            }
+
+            .waitlist-form {
+                flex-direction: column;
+            }
+
+            .waitlist-form input,
+            .btn-primary {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Bou<span>ge</span></div>
+            <span class="badge">Coming Soon</span>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content animate-on-scroll">
+                <h1>Speak freely with <span>people who matter</span></h1>
+                <p class="tagline">Anonymous texting with known groups</p>
+                <p class="hero-description">
+                    Confess, ask questions, share secrets — with friends who actually know you. 
+                    Not to the world. Not to strangers. Just your people, with the freedom to be real.
+                </p>
+                <div class="app-badges">
+                    <div class="app-badge">
+                        <span>App Store — Coming Soon</span>
+                    </div>
+                    <div class="app-badge">
+                        <span>Play Store — Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+            <div class="phone-mockup animate-on-scroll">
+                <div class="phone-screen">
+                    <div class="chat-header">
+                        <div class="chat-avatar">C</div>
+                        <div class="chat-info">
+                            <h4>College Friends</h4>
+                            <p>12 members</p>
+                        </div>
+                    </div>
+                    <div class="chat-messages">
+                        <div class="message ghost">
+                            <div class="sender">Mystic Owl</div>
+                            I've been meaning to tell someone... I switched my major and haven't told my parents yet
+                        </div>
+                        <div class="message real">
+                            That's brave! You'll know when the time is right
+                        </div>
+                        <div class="message ghost">
+                            <div class="sender">Stellar Lynx</div>
+                            Same boat here. The pressure is real
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <div class="ghost-toggle">
+                            <span>👻</span>
+                            <div class="toggle-switch"></div>
+                        </div>
+                        <div class="input-field"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="problem">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2>Why we built this</h2>
+                <p>Social media connects us to everyone. But who can you really talk to?</p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card animate-on-scroll">
+                    <div class="problem-icon">📢</div>
+                    <h3>Broadcasting to strangers</h3>
+                    <p>Posting on social media means sharing with thousands who don't actually care. Your real thoughts get lost in the noise.</p>
+                </div>
+                <div class="problem-card animate-on-scroll">
+                    <div class="problem-icon">😰</div>
+                    <h3>Judgment in group chats</h3>
+                    <p>Even with friends, you filter yourself. What will they think? The fear of judgment kills honest conversation.</p>
+                </div>
+                <div class="problem-card animate-on-scroll">
+                    <div class="problem-icon">🎭</div>
+                    <h3>No place to be vulnerable</h3>
+                    <p>Where do you confess a secret? Ask an embarrassing question? There's no safe space for real talk.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solution">
+        <div class="container">
+            <div class="solution-content">
+                <div class="solution-text animate-on-scroll">
+                    <h3>Meet Ghost Mode</h3>
+                    <p>One toggle. Total freedom. Speak as your real self, or speak as a ghost — your choice, for every single message.</p>
+                    <p>Your friends know you're in the group. They just don't know which message is yours when you don't want them to.</p>
+                    <ul class="feature-list">
+                        <li>Anonymous per-message toggle</li>
+                        <li>Identity rotates every 24 hours</li>
+                        <li>Once sent, never traceable</li>
+                        <li>Your circle, your rules</li>
+                    </ul>
+                </div>
+                <div class="problem-card animate-on-scroll" style="text-align: center; padding: 3rem;">
+                    <div style="font-size: 4rem; margin-bottom: 1.5rem;">👻</div>
+                    <h3 style="margin-bottom: 1rem;">Ghost Identity</h3>
+                    <p style="color: var(--color-text-secondary); margin-bottom: 2rem;">When Ghost Mode is ON, you become:</p>
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 1.125rem; font-weight: 600; color: var(--color-accent-dark);">
+                        <div>Mystic Owl</div>
+                        <div>Stellar Lynx</div>
+                        <div>Phantom Fox</div>
+                        <div>Shadow Tiger</div>
+                    </div>
+                    <p style="margin-top: 2rem; font-size: 0.875rem; color: var(--color-text-muted);">A new name every day. Never linked to your real profile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2>Everything you need</h2>
+                <p>Built for real conversations with real people</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card highlight animate-on-scroll">
+                    <div class="feature-icon">👻</div>
+                    <h3>Ghost Mode</h3>
+                    <p>Toggle anonymity per message. Speak freely without judgment. Your identity rotates every 24 hours.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">👥</div>
+                    <h3>Private Groups</h3>
+                    <p>Create groups for your college, office, or friends. Invite-only. You know exactly who's in the room.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">📌</div>
+                    <h3>Topics & Polls</h3>
+                    <p>Start conversations that matter. Create polls, confessions, or news topics. Each with its own chat.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Ephemeral Messages</h3>
+                    <p>Messages auto-delete after 24 hours. No permanent record. Just the conversation, then it's gone.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Community Moderation</h3>
+                    <p>Democracy-based reporting. Groups self-moderate. Bad actors get temporary bans, not permanent exile.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Real-time Chat</h3>
+                    <p>Instant delivery. See who's typing. Real-time reactions. Built on WebSockets for speed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2>How it works</h2>
+                <p>Three steps to freedom</p>
+            </div>
+            <div class="steps">
+                <div class="step animate-on-scroll">
+                    <div class="step-number">1</div>
+                    <h3>Join a Group</h3>
+                    <p>Create a private group or join via invite link. Only people you know and trust.</p>
+                </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">2</div>
+                    <h3>Toggle Ghost Mode</h3>
+                    <p>Before sending a message, flip the Ghost switch. Become anonymous with one tap.</p>
+                </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">3</div>
+                    <h3>Speak Freely</h3>
+                    <p>Send your message. Confess, ask, share. No judgment. No screenshots with your name.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="privacy">
+        <div class="container">
+            <h2 class="animate-on-scroll">Irreversible anonymity</h2>
+            <p class="animate-on-scroll">We built Bouge on one unbreakable promise</p>
+            <div class="promise-grid">
+                <div class="promise-item animate-on-scroll">
+                    <h4>No Data Storage</h4>
+                    <p>Ghost identities only exist in temporary memory. No database. No logs. No way to trace back.</p>
+                </div>
+                <div class="promise-item animate-on-scroll">
+                    <h4>No Backdoors</h4>
+                    <p>Not even admins can see who sent a ghost message. Not us. Not anyone. Ever.</p>
+                </div>
+                <div class="promise-item animate-on-scroll">
+                    <h4>24-Hour Rotation</h4>
+                    <p>Your ghost identity changes daily. Even if someone guessed, they'd be wrong tomorrow.</p>
+                </div>
+                <div class="promise-item animate-on-scroll">
+                    <h4>India Compliant</h4>
+                    <p>Built for Indian regulations (CERT-In). Metadata retained as required. Content stays private.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="waitlist">
+        <div class="container">
+            <div class="waitlist-box animate-on-scroll">
+                <h2>Be the first to try Bouge</h2>
+                <p>Join the waitlist. We'll notify you when we're ready.</p>
+                <form class="waitlist-form" action="#" method="POST">
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn-primary">Join Waitlist</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">Bou<span>ge</span></div>
+        <p>A product of <span class="company">Tydon Technologies Pvt Ltd</span></p>
+        <p>Navi Mumbai, India</p>
+        <p style="margin-top: 1.5rem; font-size: 0.875rem;">© 2025 Tydon Technologies. All rights reserved.</p>
+    </footer>
+
+    <script>        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Form submission handler (placeholder)
+        document.querySelector('.waitlist-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert('Thank you for your interest! We will notify you at: ' + email);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
