@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.tydon.vibechat",
+    "sha256_cert_fingerprints": [
+      "D3:87:62:11:4C:84:67:B4:92:0B:A9:55:B9:62:91:83:90:88:23:D9:02:3C:D1:9F:BE:4A:A3:CC:4D:EE:EA:90"
+    ]
+  }
+}]
