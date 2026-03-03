@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Bouge</title>
+    <meta name="description" content="Bouge Privacy Policy - How we protect your data and maintain your anonymity.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #FFFFFF;
+            --color-bg-secondary: #F0F2F5;
+            --color-accent: #25D366;
+            --color-accent-dark: #128C7E;
+            --color-text: #1A1A1A;
+            --color-text-secondary: #6B7280;
+            --color-border: #E5E7EB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-text);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--color-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-text);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-accent-dark);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .last-updated {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-text);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--color-text-secondary);
+        }
+
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            color: var(--color-text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: var(--color-bg-secondary);
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box h3 {
+            margin-top: 0;
+            color: var(--color-text);
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        a {
+            color: var(--color-accent-dark);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--color-border);
+            margin-top: 4rem;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--color-text-secondary);
+            margin: 0 1rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            main {
+                padding-top: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">Bouge</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <a href="/" class="back-link">← Back to Home</a>
+        
+        <h1>Privacy Policy</h1>
+        <p class="last-updated">Last Updated: March 4, 2026</p>
+
+        <div class="highlight-box">
+            <h3>🔒 Our Privacy Promise</h3>
+            <p>Bouge is built on a foundation of privacy. We believe you should control what you share and with whom. This policy explains how we protect your data while delivering a secure messaging experience.</p>
+        </div>
+
+        <h2>1. Information We Collect</h2>
+        
+        <h3>1.1 Account Information</h3>
+        <ul>
+            <li><strong>Phone Number:</strong> Required for account verification and security. We use this to prevent spam and ensure community safety.</li>
+            <li><strong>Profile Information:</strong> Optional display name and avatar you choose to share with your groups.</li>
+            <li><strong>Device Information:</strong> Device type, operating system, and app version for technical support and improvements.</li>
+        </ul>
+
+        <h3>1.2 Messages & Content</h3>
+        <ul>
+            <li><strong>Quick Chat Messages:</strong> Ephemeral messages that are automatically deleted from our servers after 24 hours.</li>
+            <li><strong>Topic Messages:</strong> Discussion content that remains visible to group members until deleted by the author or admin.</li>
+            <li><strong>Poll Data:</strong> Voting choices are stored anonymously and not linked to your identity.</li>
+            <li><strong>Ghost Mode Messages:</strong> When using Ghost Mode, your messages are cryptographically separated from your account. Even we cannot trace them back to you.</li>
+        </ul>
+
+        <h3>1.3 Usage Data</h3>
+        <ul>
+            <li>App feature usage (anonymized)</li>
+            <li>Crash reports and performance metrics</li>
+            <li>General engagement statistics</li>
+        </ul>
+
+        <h2>2. How We Use Your Information</h2>
+        
+        <p>We use your information solely to:</p>
+        <ul>
+            <li>Provide and maintain the Bouge messaging service</li>
+            <li>Verify your identity and prevent fraud</li>
+            <li>Improve app performance and user experience</li>
+            <li>Enforce our Terms of Service and community guidelines</li>
+            <li>Communicate important service updates</li>
+        </ul>
+
+        <p><strong>We do NOT:</strong></p>
+        <ul>
+            <li>Sell your personal data to third parties</li>
+            <li>Use your data for targeted advertising</li>
+            <li>Share your information with marketers</li>
+            <li>Link Ghost Mode messages to your real identity</li>
+        </ul>
+
+        <h2>3. Ghost Mode & Anonymity</h2>
+        
+        <div class="highlight-box">
+            <h3>🎭 How Ghost Mode Protects You</h3>
+            <p>When you activate Ghost Mode:</p>
+            <ul>
+                <li>Your message is encrypted and routed through our anonymity layer</li>
+                <li>A temporary "ghost identity" is generated for that message</li>
+                <li>Ghost identities rotate every 24 hours automatically</li>
+                <li>No database links your real account to ghost messages</li>
+                <li>Even with legal requests, we cannot reveal who sent a ghost message</li>
+            </ul>
+        </div>
+
+        <h2>4. Data Storage & Security</h2>
+        
+        <h3>4.1 Data Retention</h3>
+        <ul>
+            <li><strong>Quick Chat Messages:</strong> Deleted after 24 hours</li>
+            <li><strong>Ghost Mode Messages:</strong> No persistent link to your identity exists</li>
+            <li><strong>Account Data:</strong> Retained until you delete your account</li>
+            <li><strong>Deleted Accounts:</strong> All associated data is permanently removed within 30 days</li>
+        </ul>
+
+        <h3>4.2 Security Measures</h3>
+        <ul>
+            <li>End-to-end encryption for all messages</li>
+            <li>Secure server infrastructure with regular security audits</li>
+            <li>Strict access controls for employee data access</li>
+            <li>Regular penetration testing and vulnerability assessments</li>
+        </ul>
+
+        <h2>5. Your Rights & Choices</h2>
+        
+        <p>You have the right to:</p>
+        <ul>
+            <li><strong>Access:</strong> Request a copy of your personal data</li>
+            <li><strong>Correction:</strong> Update inaccurate information</li>
+            <li><strong>Deletion:</strong> Delete your account and all associated data</li>
+            <li><strong>Portability:</strong> Export your data in a standard format</li>
+            <li><strong>Control:</strong> Choose what information you share and when</li>
+        </ul>
+
+        <p>To exercise these rights, contact us at <a href="mailto:privacy@tydontech.com">privacy@tydontech.com</a>.</p>
+
+        <h2>6. Third-Party Services</h2>
+        
+        <p>We use limited third-party services:</p>
+        <ul>
+            <li><strong>Cloud Infrastructure:</strong> For hosting and data storage</li>
+            <li><strong>Analytics:</strong> Anonymous usage statistics (no personal identifiers)</li>
+            <li><strong>SMS Verification:</strong> Phone number verification services</li>
+        </ul>
+
+        <p>All third parties are contractually bound to protect your data and are prohibited from using it for any purpose other than providing services to Bouge.</p>
+
+        <h2>7. Children's Privacy</h2>
+        
+        <p>Bouge is not intended for users under 13 years of age. We do not knowingly collect personal information from children under 13. If we discover that a child under 13 has provided us with personal information, we will promptly delete it.</p>
+
+        <h2>8. International Data Transfers</h2>
+        
+        <p>Your data may be processed on servers located outside your country. We ensure appropriate safeguards are in place to protect your information in accordance with this Privacy Policy and applicable data protection laws.</p>
+
+        <h2>9. Changes to This Policy</h2>
+        
+        <p>We may update this Privacy Policy from time to time. We will notify you of any significant changes through the app or via email. Your continued use of Bouge after changes constitutes acceptance of the updated policy.</p>
+
+        <h2>10. Contact Us</h2>
+        
+        <p>If you have questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
+        
+        <p><strong>Email:</strong> <a href="mailto:privacy@tydontech.com">privacy@tydontech.com</a><br>
+        <strong>Company:</strong> Tydon Tech<br>
+        <strong>Website:</strong> <a href="https://tydontech.com">tydontech.com</a></p>
+
+        <div class="highlight-box">
+            <h3>📧 Data Protection Officer</h3>
+            <p>For privacy-related inquiries or to exercise your rights, contact our Data Protection Officer at <a href="mailto:dpo@tydontech.com">dpo@tydontech.com</a>.</p>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tydon Tech. All rights reserved.</p>
+        <p>
+            <a href="/">Home</a>
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="/terms.html">Terms of Service</a>
+        </p>
+    </footer>
+</body>
+</html>
