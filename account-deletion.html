@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Deletion - Bouge</title>
+    <meta name="description" content="How to delete your Bouge account. Account deletion can be done directly inside the Bouge app.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #FFFFFF;
+            --color-bg-secondary: #F0F2F5;
+            --color-accent: #25D366;
+            --color-accent-dark: #128C7E;
+            --color-text: #1A1A1A;
+            --color-text-secondary: #6B7280;
+            --color-border: #E5E7EB;
+            --color-danger: #EF4444;
+            --color-danger-bg: #FEF2F2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-text);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--color-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-text);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-accent-dark);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .subtitle {
+            color: var(--color-text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-text);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--color-text-secondary);
+        }
+
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            color: var(--color-text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight-box {
+            background: var(--color-bg-secondary);
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box h3 {
+            margin-top: 0;
+            color: var(--color-text);
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .danger-box {
+            background: var(--color-danger-bg);
+            border-left: 4px solid var(--color-danger);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .danger-box h3 {
+            margin-top: 0;
+            color: var(--color-danger);
+        }
+
+        .danger-box p, .danger-box li {
+            color: #7F1D1D;
+        }
+
+        .steps-box {
+            background: linear-gradient(135deg, #F0FDF4 0%, #FFFFFF 100%);
+            border: 2px solid var(--color-accent);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .steps-box h3 {
+            margin-top: 0;
+            color: var(--color-text);
+            font-size: 1.3rem;
+        }
+
+        .steps-list {
+            list-style: none;
+            padding-left: 0;
+            counter-reset: step-counter;
+        }
+
+        .steps-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .steps-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--color-accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .steps-list li strong {
+            display: block;
+            color: var(--color-text);
+            margin-bottom: 0.25rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-card {
+            background: var(--color-bg-secondary);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .info-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card ul {
+            margin-bottom: 0;
+            padding-left: 1.25rem;
+        }
+
+        .info-card li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .deleted {
+            color: var(--color-danger);
+        }
+
+        .retained {
+            color: var(--color-accent-dark);
+        }
+
+        .retention-box {
+            background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%);
+            border: 2px solid #3B82F6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .retention-box h3 {
+            margin-top: 0;
+            color: #1E40AF;
+        }
+
+        .retention-box p {
+            color: #1E3A8A;
+        }
+
+        strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        .developer-info {
+            background: var(--color-bg-secondary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .developer-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .developer-info strong {
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--color-border);
+            margin-top: 4rem;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--color-text-secondary);
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            main {
+                padding-top: 6rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .steps-list li {
+                padding-left: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">Bou<span>ge</span></a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <a href="/" class="back-link">← Back to Home</a>
+        
+        <h1>Account Deletion</h1>
+        <p class="subtitle">How to permanently delete your Bouge account and what happens to your data.</p>
+
+        <div class="highlight-box">
+            <h3>📱 Delete Your Account Inside the Bouge App</h3>
+            <p>Account deletion can be done directly inside the Bouge app. You do not need to contact support or email us to delete your account.</p>
+        </div>
+
+        <div class="steps-box">
+            <h3>Steps to Delete Your Account</h3>
+            <ol class="steps-list">
+                <li>
+                    <strong>Open Bouge</strong>
+                    Launch the Bouge app on your device.
+                </li>
+                <li>
+                    <strong>Go to Profile</strong>
+                    Navigate to your Profile tab in the app.
+                </li>
+                <li>
+                    <strong>Tap Delete Account</strong>
+                    Find and tap the "Delete Account" option.
+                </li>
+                <li>
+                    <strong>Confirm</strong>
+                    Follow the confirmation steps to permanently delete your account.
+                </li>
+            </ol>
+        </div>
+
+        <h2>What Gets Deleted</h2>
+        <p>When you delete your account, the following data is permanently removed:</p>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <h4><span class="deleted">🗑️</span> Deleted Data</h4>
+                <ul>
+                    <li>Phone number</li>
+                    <li>Profile information</li>
+                    <li>Authentication tokens</li>
+                    <li>Personal identifiers</li>
+                    <li>Account settings</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4><span class="retained">📋</span> What May Remain</h4>
+                <ul>
+                    <li>Messages (anonymized)</li>
+                    <li>Audit logs (if applicable)</li>
+                    <li>Aggregated analytics data</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="danger-box">
+            <h3>⚠️ Important Notes</h3>
+            <ul>
+                <li>Messages you sent may remain visible to other group participants but will be disassociated from your personal identifiers.</li>
+                <li>Once your account is deleted, this action cannot be undone.</li>
+                <li>You will lose access to all your groups and message history.</li>
+                <li>If you wish to use Bouge again, you will need to create a new account.</li>
+            </ul>
+        </div>
+
+        <div class="retention-box">
+            <h3>⏱️ Data Retention Period</h3>
+            <p><strong>Soft delete immediately:</strong> Your account is deactivated immediately upon deletion.</p>
+            <p><strong>Full removal within 30 days:</strong> Complete removal of personal identifiers and account data occurs within 30 days of deletion, unless otherwise required by law or for fraud prevention purposes.</p>
+        </div>
+
+        <div class="developer-info">
+            <p><strong>Developer</strong></p>
+            <p>Tydon Tech Pvt. Ltd.</p>
+            <p style="margin-top: 0.5rem;"><strong>App</strong></p>
+            <p>Bouge</p>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tydon Technologies Private Limited. All rights reserved.</p>
+        <p>
+            <a href="/">Home</a>
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="/terms.html">Terms of Service</a>
+            <a href="/account-deletion.html">Account Deletion</a>
+        </p>
+    </footer>
+</body>
+</html>
