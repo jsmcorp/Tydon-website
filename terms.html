@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Bouge</title>
+    <meta name="description" content="Bouge Terms of Service - Rules and guidelines for using our anonymous messaging platform.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #FFFFFF;
+            --color-bg-secondary: #F0F2F5;
+            --color-accent: #25D366;
+            --color-accent-dark: #128C7E;
+            --color-text: #1A1A1A;
+            --color-text-secondary: #6B7280;
+            --color-border: #E5E7EB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-text);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--color-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-text);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-accent-dark);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .last-updated {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-text);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--color-text-secondary);
+        }
+
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            color: var(--color-text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: var(--color-bg-secondary);
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box h3 {
+            margin-top: 0;
+            color: var(--color-text);
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .warning-box {
+            background: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box h3 {
+            margin-top: 0;
+            color: #92400E;
+        }
+
+        .warning-box p, .warning-box li {
+            color: #78350F;
+        }
+
+        strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        a {
+            color: var(--color-accent-dark);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--color-border);
+            margin-top: 4rem;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--color-text-secondary);
+            margin: 0 1rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            main {
+                padding-top: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">Bouge</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <a href="/" class="back-link">← Back to Home</a>
+        
+        <h1>Terms of Service</h1>
+        <p class="last-updated">Last Updated: March 4, 2026</p>
+
+        <div class="highlight-box">
+            <h3>📋 Agreement Overview</h3>
+            <p>By using Bouge, you agree to these Terms of Service. Please read them carefully. If you don't agree, please don't use our service.</p>
+        </div>
+
+        <h2>1. Definitions</h2>
+        
+        <ul>
+            <li><strong>"Bouge"</strong> refers to the mobile application and related services provided by Tydon Technologies Private Limited.</li>
+            <li><strong>"We," "Us," "Our"</strong> refers to Tydon Technologies Private Limited.</li>
+            <li><strong>"You," "User"</strong> refers to any individual who accesses or uses Bouge.</li>
+            <li><strong>"Content"</strong> means any messages, text, images, polls, or other materials shared through Bouge.</li>
+            <li><strong>"Ghost Mode"</strong> refers to the anonymous messaging feature where your identity is hidden.</li>
+            <li><strong>"Group"</strong> refers to a collection of users who can communicate with each other within Bouge.</li>
+        </ul>
+
+        <h2>2. Eligibility</h2>
+        
+        <h3>2.1 Age Requirement</h3>
+        <p>You must be at least <strong>13 years old</strong> to use Bouge. If you are under 18, you must have permission from a parent or legal guardian.</p>
+
+        <h3>2.2 Account Registration</h3>
+        <p>To use Bouge, you must:</p>
+        <ul>
+            <li>Provide a valid phone number for verification</li>
+            <li>Maintain the security of your account</li>
+            <li>Notify us immediately of any unauthorized access</li>
+            <li>Ensure your account information is accurate and up-to-date</li>
+        </ul>
+
+        <h2>3. Acceptable Use</h2>
+        
+        <h3>3.1 What You CAN Do</h3>
+        <ul>
+            <li>Communicate honestly and respectfully with your groups</li>
+            <li>Use Ghost Mode for appropriate anonymous conversations</li>
+            <li>Create and participate in polls and discussions</li>
+            <li>Share your thoughts, opinions, and feedback</li>
+            <li>Report inappropriate behavior or content</li>
+        </ul>
+
+        <div class="warning-box">
+            <h3>🚫 What You CANNOT Do</h3>
+            <ul>
+                <li><strong>Harass, bully, or threaten</strong> any user, even anonymously</li>
+                <li><strong>Share illegal content</strong> including child exploitation material</li>
+                <li><strong>Promote violence, terrorism, or self-harm</strong></li>
+                <li><strong>Spread hate speech</strong> based on race, religion, gender, or other protected characteristics</li>
+                <li><strong>Distribute spam, scams, or malware</strong></li>
+                <li><strong>Impersonate others</strong> to deceive or defraud</li>
+                <li><strong>Share private information</strong> of others without consent (doxing)</li>
+                <li><strong>Use automated systems</strong> or bots without our permission</li>
+                <li><strong>Attempt to circumvent</strong> our security or anonymity systems</li>
+                <li><strong>Sell or transfer</strong> your account to others</li>
+            </ul>
+        </div>
+
+        <h2>4. Content & Intellectual Property</h2>
+        
+        <h3>4.1 Your Content</h3>
+        <p>You retain ownership of the content you create. However, by posting on Bouge, you grant us a limited license to:</p>
+        <ul>
+            <li>Store and display your content within the app</li>
+            <li>Moderate and remove content that violates these terms</li>
+            <li>Use anonymized data for service improvement</li>
+        </ul>
+
+        <h3>4.2 Content Removal</h3>
+        <p>We reserve the right to remove any content that:</p>
+        <ul>
+            <li>Violates these Terms of Service</li>
+            <li>Is reported by users and found to be inappropriate</li>
+            <li>Poses a risk to user safety</li>
+            <li>Is required to be removed by law</li>
+        </ul>
+
+        <h3>4.3 Ephemeral Content</h3>
+        <p>Quick Chat messages are designed to be temporary and will be automatically deleted after 24 hours. While we make reasonable efforts to delete this content, you acknowledge that:</p>
+        <ul>
+            <li>Other users may screenshot or save content before deletion</li>
+            <li>We may retain certain data for legal or security purposes</li>
+            <li>Deleted content cannot be recovered</li>
+        </ul>
+
+        <h2>5. Ghost Mode & Anonymity</h2>
+        
+        <h3>5.1 How Ghost Mode Works</h3>
+        <p>Ghost Mode allows you to send messages without revealing your identity to other group members. However:</p>
+        <ul>
+            <li>We maintain technical logs for security and legal compliance</li>
+            <li>We may disclose your identity if required by law or to prevent harm</li>
+            <li>Ghost Mode is not a license to violate these terms</li>
+        </ul>
+
+        <h3>5.2 Anonymity Limitations</h3>
+        <p>While we take privacy seriously, absolute anonymity cannot be guaranteed in all circumstances. We may disclose user information:</p>
+        <ul>
+            <li>To comply with valid legal requests</li>
+            <li>To protect our rights, property, or safety</li>
+            <li>To prevent imminent harm to individuals</li>
+            <li>To investigate violations of these terms</li>
+        </ul>
+
+        <h2>6. Group Administration</h2>
+        
+        <h3>6.1 Admin Responsibilities</h3>
+        <p>Group administrators have the authority to:</p>
+        <ul>
+            <li>Set group rules and Vibe Modes (Strict/Casual/Wild)</li>
+            <li>Remove inappropriate content</li>
+            <li>Remove or ban users from the group</li>
+            <li>Delete the group</li>
+        </ul>
+
+        <h3>6.2 Admin Liability</h3>
+        <p>Admins are responsible for maintaining a safe environment in their groups. We are not liable for the actions of group admins or members.</p>
+
+        <h2>7. Termination</h2>
+        
+        <h3>7.1 By You</h3>
+        <p>You may delete your account at any time through the app settings. Upon deletion:</p>
+        <ul>
+            <li>Your account data will be permanently removed within 30 days</li>
+            <li>Your messages in groups may remain (without your identity)</li>
+            <li>This termination is irreversible</li>
+        </ul>
+
+        <h3>7.2 By Us</h3>
+        <p>We may suspend or terminate your account if you:</p>
+        <ul>
+            <li>Violate these Terms of Service</li>
+            <li>Engage in illegal activities</li>
+            <li>Threaten the safety of our community</li>
+            <li>Create multiple accounts to evade restrictions</li>
+        </ul>
+
+        <h2>8. Disclaimers & Limitations</h2>
+        
+        <h3>8.1 Service Availability</h3>
+        <p>We strive to maintain 24/7 service, but we do not guarantee uninterrupted access. Bouge is provided "as is" without warranties of any kind.</p>
+
+        <h3>8.2 Limitation of Liability</h3>
+        <p>To the maximum extent permitted by law, Tydon Technologies Private Limited shall not be liable for:</p>
+        <ul>
+            <li>Indirect, incidental, or consequential damages</li>
+            <li>Loss of data, profits, or reputation</li>
+            <li>Content posted by users</li>
+            <li>Actions taken by group admins</li>
+            <li>Unauthorized access to your account</li>
+        </ul>
+
+        <h3>8.3 Indemnification</h3>
+        <p>You agree to indemnify and hold harmless Tydon Technologies Private Limited from any claims arising from:</p>
+        <ul>
+            <li>Your use of Bouge</li>
+            <li>Content you post</li>
+            <li>Violations of these terms</li>
+            <li>Violations of others' rights</li>
+        </ul>
+
+        <h2>9. Dispute Resolution</h2>
+        
+        <h3>9.1 Governing Law</h3>
+        <p>These Terms shall be governed by the laws of India, without regard to conflict of law principles.</p>
+
+        <h3>9.2 Arbitration</h3>
+        <p>Any disputes arising from these terms shall first be attempted to be resolved through good faith negotiation. If unresolved, disputes shall be settled through binding arbitration in Mumbai, India.</p>
+
+        <h3>9.3 Class Action Waiver</h3>
+        <p>You agree to resolve disputes on an individual basis and waive any right to participate in class actions.</p>
+
+        <h2>10. Changes to Terms</h2>
+        
+        <p>We may update these Terms from time to time. We will notify you of significant changes through:</p>
+        <ul>
+            <li>In-app notifications</li>
+            <li>Email to your registered address</li>
+            <li>Updates to this page with a new "Last Updated" date</li>
+        </ul>
+        <p>Your continued use of Bouge after changes constitutes acceptance of the updated terms.</p>
+
+        <h2>11. Contact Information</h2>
+        
+        <p>If you have questions about these Terms, please contact us:</p>
+        
+        <p><strong>Company:</strong> Tydon Technologies Private Limited<br>
+        <strong>Email:</strong> <a href="mailto:legal@tydontech.com">legal@tydontech.com</a><br>
+        <strong>Website:</strong> <a href="https://tydontech.com">tydontech.com</a><br>
+        <strong>Address:</strong> Navi Mumbai, Maharashtra, India</p>
+
+        <div class="highlight-box">
+            <h3>📧 Legal Inquiries</h3>
+            <p>For legal notices or law enforcement requests, contact us at <a href="mailto:legal@tydontech.com">legal@tydontech.com</a>. We respond to valid legal process in accordance with applicable law.</p>
+        </div>
+
+        <h2>12. Severability</h2>
+        
+        <p>If any provision of these Terms is found to be unenforceable, the remaining provisions shall remain in full force and effect.</p>
+
+        <h2>13. Entire Agreement</h2>
+        
+        <p>These Terms constitute the entire agreement between you and Tydon Technologies Private Limited regarding your use of Bouge, superseding any prior agreements.</p>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tydon Technologies Private Limited. All rights reserved.</p>
+        <p>
+            <a href="/">Home</a>
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="/terms.html">Terms of Service</a>
+        </p>
+    </footer>
+</body>
+</html>
