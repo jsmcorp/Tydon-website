@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bouge - Speak Freely With People Who Matter</title>
-    <meta name="description" content="Anonymous texting with known groups. Confess, ask, share secrets with people who matter.">
+    <meta name="description"
+        content="Anonymous texting with known groups. Confess, ask, share secrets with people who matter.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -19,8 +21,15 @@
             --color-border: #E5E7EB;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -31,13 +40,27 @@
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .animate-on-scroll {
@@ -539,7 +562,7 @@
             margin-bottom: 1.5rem;
         }
 
-        .privacy > .container > p {
+        .privacy>.container>p {
             font-size: 1.25rem;
             opacity: 0.9;
             max-width: 700px;
@@ -593,21 +616,20 @@
             margin-bottom: 1rem;
         }
 
-        .waitlist-box > p {
+        .waitlist-box>p {
             color: var(--color-text-secondary);
             margin-bottom: 2rem;
         }
 
         .waitlist-form {
             display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 450px;
+            margin: 0 auto;
         }
 
         .waitlist-form input {
-            flex: 1;
-            min-width: 250px;
             padding: 1rem 1.25rem;
             border: 1px solid var(--color-border);
             border-radius: 12px;
@@ -615,6 +637,7 @@
             font-family: inherit;
             background: var(--color-bg);
             transition: border-color 0.3s ease;
+            width: 100%;
         }
 
         .waitlist-form input:focus {
@@ -624,6 +647,97 @@
 
         .waitlist-form input::placeholder {
             color: var(--color-text-muted);
+        }
+
+        .social-proof {
+            margin-bottom: 2rem;
+        }
+
+        .counter {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .counter-label {
+            color: var(--color-text-secondary);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            max-width: 300px;
+            height: 8px;
+            background: var(--color-bg-secondary);
+            border-radius: 999px;
+            margin: 0 auto 1rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 47%;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+            border-radius: 999px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .scarcity-text {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .college-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(37, 211, 102, 0.1);
+            color: var(--color-accent-dark);
+            border-radius: 999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-note {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            margin-top: 1rem;
+        }
+
+        .footer-contact {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-contact a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            color: var(--color-accent);
         }
 
         .btn-primary {
@@ -674,6 +788,7 @@
         }
 
         @media (max-width: 1024px) {
+
             .hero-container,
             .solution-content {
                 grid-template-columns: 1fr;
@@ -728,6 +843,7 @@
         }
     </style>
 </head>
+
 <body>
     <nav>
         <div class="nav-container">
@@ -742,7 +858,7 @@
                 <h1>Speak freely with <span>people who matter</span></h1>
                 <p class="tagline">Anonymous texting with known groups</p>
                 <p class="hero-description">
-                    Confess, ask questions, share secrets — with friends who actually know you. 
+                    Confess, ask questions, share secrets — with friends who actually know you.
                     Not to the world. Not to strangers. Just your people, with the freedom to be real.
                 </p>
                 <div class="app-badges">
@@ -798,17 +914,20 @@
                 <div class="problem-card animate-on-scroll">
                     <div class="problem-icon">📢</div>
                     <h3>Broadcasting to strangers</h3>
-                    <p>Posting on social media means sharing with thousands who don't actually care. Your real thoughts get lost in the noise.</p>
+                    <p>Posting on social media means sharing with thousands who don't actually care. Your real thoughts
+                        get lost in the noise.</p>
                 </div>
                 <div class="problem-card animate-on-scroll">
                     <div class="problem-icon">😰</div>
                     <h3>Judgment in group chats</h3>
-                    <p>Even with friends, you filter yourself. What will they think? The fear of judgment kills honest conversation.</p>
+                    <p>Even with friends, you filter yourself. What will they think? The fear of judgment kills honest
+                        conversation.</p>
                 </div>
                 <div class="problem-card animate-on-scroll">
                     <div class="problem-icon">🎭</div>
                     <h3>No place to be vulnerable</h3>
-                    <p>Where do you confess a secret? Ask an embarrassing question? There's no safe space for real talk.</p>
+                    <p>Where do you confess a secret? Ask an embarrassing question? There's no safe space for real talk.
+                    </p>
                 </div>
             </div>
         </div>
@@ -819,8 +938,10 @@
             <div class="solution-content">
                 <div class="solution-text animate-on-scroll">
                     <h3>Meet Ghost Mode</h3>
-                    <p>One toggle. Total freedom. Speak as your real self, or speak as a ghost — your choice, for every single message.</p>
-                    <p>Your friends know you're in the group. They just don't know which message is yours when you don't want them to.</p>
+                    <p>One toggle. Total freedom. Speak as your real self, or speak as a ghost — your choice, for every
+                        single message.</p>
+                    <p>Your friends know you're in the group. They just don't know which message is yours when you don't
+                        want them to.</p>
                     <ul class="feature-list">
                         <li>Anonymous per-message toggle</li>
                         <li>Identity rotates every 24 hours</li>
@@ -831,14 +952,17 @@
                 <div class="problem-card animate-on-scroll" style="text-align: center; padding: 3rem;">
                     <div style="font-size: 4rem; margin-bottom: 1.5rem;">👻</div>
                     <h3 style="margin-bottom: 1rem;">Ghost Identity</h3>
-                    <p style="color: var(--color-text-secondary); margin-bottom: 2rem;">When Ghost Mode is ON, you become:</p>
-                    <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 1.125rem; font-weight: 600; color: var(--color-accent-dark);">
+                    <p style="color: var(--color-text-secondary); margin-bottom: 2rem;">When Ghost Mode is ON, you
+                        become:</p>
+                    <div
+                        style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 1.125rem; font-weight: 600; color: var(--color-accent-dark);">
                         <div>Mystic Owl</div>
                         <div>Stellar Lynx</div>
                         <div>Phantom Fox</div>
                         <div>Shadow Tiger</div>
                     </div>
-                    <p style="margin-top: 2rem; font-size: 0.875rem; color: var(--color-text-muted);">A new name every day. Never linked to your real profile.</p>
+                    <p style="margin-top: 2rem; font-size: 0.875rem; color: var(--color-text-muted);">A new name every
+                        day. Never linked to your real profile.</p>
                 </div>
             </div>
         </div>
@@ -854,27 +978,32 @@
                 <div class="feature-card highlight animate-on-scroll">
                     <div class="feature-icon">👻</div>
                     <h3>Ghost Mode</h3>
-                    <p>Toggle anonymity per message. Speak freely without judgment. Your identity rotates every 24 hours.</p>
+                    <p>Toggle anonymity per message. Speak freely without judgment. Your identity rotates every 24
+                        hours.</p>
                 </div>
                 <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">👥</div>
                     <h3>Private Groups</h3>
-                    <p>Create groups for your college, office, or friends. Invite-only. You know exactly who's in the room.</p>
+                    <p>Create groups for your college, office, or friends. Invite-only. You know exactly who's in the
+                        room.</p>
                 </div>
                 <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">📌</div>
                     <h3>Topics & Polls</h3>
-                    <p>Start conversations that matter. Create polls, confessions, or news topics. Each with its own chat.</p>
+                    <p>Start conversations that matter. Create polls, confessions, or news topics. Each with its own
+                        chat.</p>
                 </div>
                 <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">🔒</div>
                     <h3>Ephemeral Messages</h3>
-                    <p>Messages auto-delete after 24 hours. No permanent record. Just the conversation, then it's gone.</p>
+                    <p>Messages auto-delete after 24 hours. No permanent record. Just the conversation, then it's gone.
+                    </p>
                 </div>
                 <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">🛡️</div>
                     <h3>Community Moderation</h3>
-                    <p>Democracy-based reporting. Groups self-moderate. Bad actors get temporary bans, not permanent exile.</p>
+                    <p>Democracy-based reporting. Groups self-moderate. Bad actors get temporary bans, not permanent
+                        exile.</p>
                 </div>
                 <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">⚡</div>
@@ -939,12 +1068,24 @@
     <section class="waitlist">
         <div class="container">
             <div class="waitlist-box animate-on-scroll">
-                <h2>Be the first to try Bouge</h2>
-                <p>Join the waitlist. We'll notify you when we're ready.</p>
-                <form class="waitlist-form" action="#" method="POST">
-                    <input type="email" name="email" placeholder="Enter your email" required>
-                    <button type="submit" class="btn-primary">Join Waitlist</button>
+                <div class="social-proof">
+                    <div class="counter" id="waitlistCounter">1,247</div>
+                    <div class="counter-label">people waiting for access</div>
+                    <div class="college-badge">🏫 Join students from D.Y Patil, Mumbai</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="scarcity-text">Beta 47% full · Next wave of invites drops soon</div>
+                </div>
+                <h2>Be First to Bouge</h2>
+                <p>Private beta launching March 2026. Invite-only.</p>
+                <form class="waitlist-form" action="#" method="POST" id="waitlistForm">
+                    <input type="email" name="email" placeholder="your@email.com" required>
+                    <input type="text" name="college" placeholder="College / Company (e.g., D.Y Patil)" required>
+                    <input type="text" name="instagram" placeholder="@instagram (optional)">
+                    <button type="submit" class="btn-primary">Request Invite</button>
                 </form>
+                <p class="privacy-note">🔒 No spam. We pinky promise. 🤙</p>
             </div>
         </div>
     </section>
@@ -952,7 +1093,11 @@
     <footer>
         <div class="footer-logo">Bou<span>ge</span></div>
         <p>A product of <span class="company">Tydon Technologies Pvt Ltd</span></p>
-        <p>Navi Mumbai, India</p>
+        <p>Mumbai, India</p>
+        <div class="footer-contact">
+            <a href="mailto:founder@tydontech.com">founder@tydontech.com</a>
+            <a href="mailto:help@tydontech.com">help@tydontech.com</a>
+        </div>
         <p style="margin-top: 1.5rem; font-size: 0.875rem;">© 2025 Tydon Technologies. All rights reserved.</p>
     </footer>
 
@@ -985,13 +1130,99 @@
             });
         });
 
-        // Form submission handler (placeholder)
-        document.querySelector('.waitlist-form').addEventListener('submit', function(e) {
+        // Form submission handler
+        document.getElementById('waitlistForm')?.addEventListener('submit', async function (e) {
             e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            alert('Thank you for your interest! We will notify you at: ' + email);
-            this.reset();
+
+            // Disable button to prevent double submissions
+            const submitBtn = this.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = "Requesting...";
+            }
+
+            // Safe optional chaining just in case inputs are missing
+            const email = this.querySelector('input[name="email"]')?.value || '';
+            const college = this.querySelector('input[name="college"]')?.value || '';
+            const instagram = this.querySelector('input[name="instagram"]')?.value || '';
+
+            try {
+                const response = await fetch('https://waitlist-api-197712251071.asia-south1.run.app', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, college, instagram })
+                });
+
+                if (response.status === 200) {
+
+                    // 🔥 Increment displayed counter (Fixed for different locales)
+                    const counter = document.getElementById('waitlistCounter');
+                    if (counter && counter.textContent) {
+                        // Use \D to strip ALL non-digit characters (fixes parsing bugs in locales that use dots or spaces like 1.247)
+                        let current = parseInt(counter.textContent.replace(/\D/g, ''), 10);
+                        if (!isNaN(current)) {
+                            current += 1;
+                            counter.textContent = current.toLocaleString();
+                        }
+                    }
+
+                    alert("🎉 You're on the list!");
+                    this.reset();
+
+                } else if (response.status === 409) {
+                    alert("You're already on the waitlist 😉");
+                } else {
+                    alert("Something went wrong. Try again.");
+                }
+
+            } catch (error) {
+                alert("Server error. Please try later.");
+            } finally {
+                // Re-enable the button
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Request Invite";
+                }
+            }
         });
+
+        // Counter animation
+        function animateCounter() {
+            const counter = document.getElementById('waitlistCounter');
+            const target = 1247;
+            const duration = 2000;
+            const start = 1000;
+            const startTime = performance.now();
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(start + (target - start) * easeOut);
+                counter.textContent = current.toLocaleString();
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        // Trigger counter animation when section is visible
+        const waitlistObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter();
+                    waitlistObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        waitlistObserver.observe(document.querySelector('.waitlist'));
     </script>
 </body>
+
 </html>
