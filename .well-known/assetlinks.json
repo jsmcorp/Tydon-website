@@ -4,7 +4,8 @@
     "namespace": "android_app",
     "package_name": "com.tydon.vibechat",
     "sha256_cert_fingerprints": [
-      "D3:87:62:11:4C:84:67:B4:92:0B:A9:55:B9:62:91:83:90:88:23:D9:02:3C:D1:9F:BE:4A:A3:CC:4D:EE:EA:90"
+      "D3:87:62:11:4C:84:67:B4:92:0B:A9:55:B9:62:91:83:90:88:23:D9:02:3C:D1:9F:BE:4A:A3:CC:4D:EE:EA:90",
+      "5C:0F:B2:58:F0:06:4F:D7:A6:26:BE:A5:B4:63:90:AD:CB:5C:F7:6D:F5:F4:15:B5:B0:D7:4B:43:92:47:63:13"
     ]
   }
 }]
