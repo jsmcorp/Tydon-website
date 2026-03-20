@@ -853,10 +853,47 @@
                 width: 100%;
             }
         }
+
+        .floating-waitlist-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+            color: white;
+            border-radius: 9999px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .floating-waitlist-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px -5px rgba(37, 211, 102, 0.5);
+            color: white;
+        }
+
+        @media (max-width: 640px) {
+            .floating-waitlist-btn {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                padding: 0.875rem 1.25rem;
+                font-size: 0.9375rem;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <a href="#waitlist-section" class="floating-waitlist-btn">
+        Join Waitlist
+    </a>
     <nav>
         <div class="nav-container">
             <div class="logo">Bou<span>ge</span></div>
@@ -874,7 +911,7 @@
                     Not to the world. Not to strangers. Just your people, with the freedom to be real.
                 </p>
                 <div class="app-badges">
-                    <a href="#" onclick="alert('iOS App Store coming soon!')">
+                    <a href="#waitlist-section" onclick="alert('iOS App Store is coming soon! Please join the waitlist to get notified.')">
                         <img src="images/app-store-black.svg" height="55" alt="Download on the App Store">
                     </a>
                     <a href="https://play.google.com/store/apps/details?id=com.tydon.vibechat" target="_blank">
@@ -1077,7 +1114,7 @@
         </div>
     </section>
 
-    <section class="waitlist">
+    <section class="waitlist" id="waitlist-section">
         <div class="container">
             <div class="waitlist-box animate-on-scroll">
                 <div class="social-proof">
