@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Bouge</title>
+    <meta name="description" content="Bouge Support - Get help with your account, app features, and troubleshooting.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #FFFFFF;
+            --color-bg-secondary: #F0F2F5;
+            --color-accent: #25D366;
+            --color-accent-dark: #128C7E;
+            --color-text: #1A1A1A;
+            --color-text-secondary: #6B7280;
+            --color-border: #E5E7EB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-text);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--color-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-text);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-accent-dark);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-text);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--color-text-secondary);
+        }
+
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            color: var(--color-text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: var(--color-bg-secondary);
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box h3 {
+            margin-top: 0;
+            color: var(--color-text);
+        }
+
+        .contact-box {
+            background: #EFF6FF;
+            border-left: 4px solid #3B82F6;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .contact-box h3 {
+            margin-top: 0;
+            color: #1E3A8A;
+        }
+
+        strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        a {
+            color: var(--color-accent-dark);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--color-border);
+            margin-top: 4rem;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--color-text-secondary);
+            margin: 0 1rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            main {
+                padding-top: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">Bouge</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/support.html">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <a href="/" class="back-link">← Back to Home</a>
+        
+        <h1>Support & Help Center</h1>
+        <p>We're here to help you get the most out of Bouge. Below you'll find answers to common questions and information on how to reach our team.</p>
+
+        <div class="contact-box">
+            <h3>📧 Direct Contact</h3>
+            <p>Need immediate assistance? Reach out directly to our support team:</p>
+            <p><strong>Email:</strong> <a href="mailto:help@tydontech.com">help@tydontech.com</a></p>
+            <p>We aim to respond to all inquiries within 24-48 hours during business days.</p>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>How do I delete my account?</h3>
+            <p>If you wish to delete your account, you can do so directly from within the Bouge app by going to Settings > Account > Delete Account, or by following the instructions on our <a href="/account-deletion.html">Account Deletion</a> page. Deleting your account will fully remove your profile data and access tokens.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How does Ghost Mode work?</h3>
+            <p>Ghost Mode is a per-message toggle that allows you to send anonymous messages within your groups. Your anonymous identity rotates every 24 hours to ensure your privacy. For more details, see our <a href="/privacy.html">Privacy Policy</a>.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Report abusive behavior or a bug</h3>
+            <p>If you encounter abusive behavior or discover a bug in the app, please email us immediately at <strong><a href="mailto:help@tydontech.com">help@tydontech.com</a></strong>. Please include any relevant screenshots or details about how the issue occurred so our team can resolve it safely and quickly.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>I'm having trouble logging in. What should I do?</h3>
+            <p>Make sure you have an active internet connection and that you are using the correct phone number. OTP wait times vary occasionally. If the issue persists for over an hour, try reinstalling the app or contacting support.</p>
+        </div>
+
+        <h2>Other Inquiries</h2>
+        <p>For business proposals, media, or general corporate inquiries:</p>
+        <ul>
+            <li><strong>Founders:</strong> <a href="mailto:founder@tydontech.com">founder@tydontech.com</a></li>
+            <li><strong>Company Name:</strong> Tydon Technologies Private Limited</li>
+            <li><strong>Headquarters:</strong> Mumbai, India</li>
+        </ul>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tydon Technologies Private Limited. All rights reserved.</p>
+        <p>
+            <a href="/">Home</a>
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="/terms.html">Terms of Service</a>
+            <a href="/support.html">Support</a>
+            <a href="/account-deletion.html">Account Deletion</a>
+        </p>
+    </footer>
+</body>
+</html>
