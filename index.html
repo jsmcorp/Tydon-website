@@ -890,15 +890,17 @@
 </head>
 
 <body>
+    <!-- 
     <a href="#waitlist-section" class="floating-waitlist-btn">
         Join Waitlist
     </a>
+    -->
     <nav>
         <div class="nav-container">
             <div class="logo">Bou<span>ge</span></div>
             <div style="display: flex; gap: 1.25rem; align-items: center;">
                 <a href="/support.html" style="color: var(--color-text-secondary); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: color 0.2s;" onmouseover="this.style.color='var(--color-text)'" onmouseout="this.style.color='var(--color-text-secondary)'">Support</a>
-                <span class="badge">App Store - Coming Soon</span>
+                <span class="badge" style="background: linear-gradient(135deg, #FF3B30 0%, #FF2D55 100%);">We are Live! 🚀</span>
             </div>
         </div>
     </nav>
@@ -913,7 +915,7 @@
                     Not to the world. Not to strangers. Just your people, with the freedom to be real.
                 </p>
                 <div class="app-badges">
-                    <a href="#waitlist-section" onclick="alert('iOS App Store is coming soon! Please join the waitlist to get notified.')">
+                    <a href="https://apps.apple.com/in/app/bouge/id6761082516" target="_blank">
                         <img src="images/app-store-black.svg" height="55" alt="Download on the App Store">
                     </a>
                     <a href="https://play.google.com/store/apps/details?id=com.tydon.vibechat" target="_blank">
@@ -1116,6 +1118,7 @@
         </div>
     </section>
 
+    <!--
     <section class="waitlist" id="waitlist-section">
         <div class="container">
             <div class="waitlist-box animate-on-scroll">
@@ -1140,6 +1143,7 @@
             </div>
         </div>
     </section>
+    -->
 
     <footer>
         <div class="footer-logo">Bou<span>ge</span></div>
@@ -1268,7 +1272,7 @@
             requestAnimationFrame(update);
         }
 
-        // Trigger counter animation when section is visible
+        /* Trigger counter animation when section is visible
         const waitlistObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1278,7 +1282,11 @@
             });
         }, { threshold: 0.5 });
 
-        waitlistObserver.observe(document.querySelector('.waitlist'));
+        const waitlistSection = document.querySelector('.waitlist');
+        if (waitlistSection) {
+            waitlistObserver.observe(waitlistSection);
+        }
+        */
     </script>
 </body>
 
