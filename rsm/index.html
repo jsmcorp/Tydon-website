@@ -887,20 +887,24 @@
             padding-left: 20px;
         }
         .founder-avatar {
-            width: 60px;
-            height: 60px;
-            background: #ddd;
+            width: 85px;
+            height: 85px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-muted);
-            font-size: 0.7rem;
-            text-align: center;
             overflow: hidden;
             flex-shrink: 0;
-            border: 2px solid white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 4px solid white;
+            box-shadow: 0 8px 24px rgba(11, 61, 145, 0.15); /* Premium shadow using primary color */
+            position: relative;
+            background: var(--bg-white);
+        }
+        .founder-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 15%; /* Frames the face nicely by shifting slightly upwards */
         }
         .founder-details h4 {
             font-size: 1.1rem;
@@ -1554,7 +1558,7 @@
                 <blockquote>I run a Fair Price Shop in Maharashtra. I built this app for myself because no tool existed. When it solved my problems, I knew every dealer in India needed it.</blockquote>
                 <div class="founder-info">
                     <div class="founder-avatar">
-                        FOUNDER<br>PHOTO
+                        <img src="images/founder.jpg" alt="Ramkrishna Pawar, Founder">
                     </div>
                     <div class="founder-details">
                         <h4>Ramkrishna Pawar, Founder & CEO</h4>
