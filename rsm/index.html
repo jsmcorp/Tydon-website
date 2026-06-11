@@ -1,0 +1,1867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ration Shop Manager — Digital App for FPS Dealers | Tydon Technologies</title>
+    <meta name="description" content="India's first mobile app for Fair Price Shop dealers. Auto stock book, live PDS data sync, beneficiary tracking. Aligned with SARTHAK-PDS scheme. Download free.">
+    <meta name="keywords" content="ration shop app, FPS dealer app, fair price shop management, PDS management app, ration shop manager, SARTHAK PDS, India ration app">
+    <meta property="og:title" content="Ration Shop Manager — Built by an FPS Dealer, for FPS Dealers">
+    <meta property="og:description" content="Stop manual registers. Auto stock book, live govt data sync, WhatsApp reminders. Download free on Play Store.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&family=Sora:wght@400;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0B3D91;        /* Deep India Blue - trust, government */
+            --accent: #FF6B00;         /* Saffron Orange - energy, CTA */
+            --success: #1B8A4C;        /* India Green - PDS/food/agriculture */
+            --bg-dark: #0A0F1E;        /* Near black for hero */
+            --bg-light: #F5F7FA;       /* Off white for sections */
+            --bg-white: #FFFFFF;
+            --text-dark: #1A1A2E;
+            --text-muted: #6B7280;
+            --border: #E5E7EB;
+            --gold: #D4AF37;            /* For badges, awards, govt alignment */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--bg-white);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hindi-text {
+            font-family: 'Tiro Devanagari Hindi', serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'DM Sans', sans-serif;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            box-shadow: 0 4px 14px rgba(255, 107, 0, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 0, 0.6);
+            color: white;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-outline-dark {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline-dark:hover {
+            background-color: rgba(11, 61, 145, 0.05);
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 107, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0); }
+        }
+
+        /* Section Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Section Badges */
+        .section-label {
+            display: inline-block;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 20px 0;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+        nav.scrolled .nav-link, nav.scrolled .logo-text {
+            color: var(--text-dark);
+        }
+        nav .nav-link, nav .logo-text {
+            color: white;
+            transition: color 0.3s ease;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        .nav-link {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .nav-link:hover {
+            opacity: 0.8;
+        }
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: inherit;
+        }
+        .hamburger-icon {
+            width: 24px;
+            height: 2px;
+            background: currentColor;
+            position: relative;
+        }
+        .hamburger-icon::before, .hamburger-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: currentColor;
+            left: 0;
+        }
+        .hamburger-icon::before { top: -8px; }
+        .hamburger-icon::after { top: 8px; }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 20% 40%, rgba(11, 61, 145, 0.4), transparent 50%),
+                radial-gradient(circle at 80% 60%, rgba(255, 107, 0, 0.1), transparent 50%);
+            min-height: 100vh;
+            padding-top: 140px;
+            padding-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            /* Premium subtle grid overlay */
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+            pointer-events: none;
+        }
+        .hero-bg-graphic {
+            position: absolute;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top, rgba(11,61,145,0.2) 0%, transparent 60%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border: 1px solid var(--gold);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        .hero h1 .hindi-text {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 5px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 80px;
+        }
+        
+        /* App Screenshot Placeholder */
+        .app-screenshot-placeholder {
+            width: 320px;
+            height: 640px;
+            background: #111;
+            border: 12px solid #222;
+            border-radius: 40px;
+            margin: 0 auto 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.2);
+            font-weight: bold;
+            font-size: 0.9rem;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+        .app-screenshot-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 25px;
+            background: #222;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            z-index: 2;
+        }
+
+        /* Premium UI Dashboard CSS */
+        .app-ui-container {
+            width: 100%;
+            height: 100%;
+            background: #09090b;
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
+            border-radius: 28px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            color: #ffffff;
+            position: relative;
+            z-index: 1;
+            padding: 45px 16px 16px;
+            text-align: left;
+            font-family: 'DM Sans', sans-serif;
+            box-sizing: border-box;
+        }
+        .ui-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        .ui-header-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .ui-header svg {
+            width: 20px;
+            height: 20px;
+            color: #a1a1aa;
+        }
+        .ui-glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 16px;
+            transition: transform 0.3s ease;
+        }
+        .ui-glass-panel:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .ui-entitlement-title {
+            font-size: 0.8rem;
+            color: #a1a1aa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .ui-entitlement-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .ui-entitlement-row:last-child {
+            margin-bottom: 0;
+        }
+        .ui-commodity {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .ui-icon-glow {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            position: relative;
+        }
+        .ui-icon-glow.rice {
+            background: rgba(234, 179, 8, 0.15);
+            color: #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.2);
+        }
+        .ui-icon-glow.wheat {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.2);
+        }
+        .ui-commodity-info h4 {
+            font-size: 0.95rem;
+            margin: 0;
+            font-weight: 600;
+        }
+        .ui-commodity-info p {
+            font-size: 0.75rem;
+            color: #a1a1aa;
+            margin: 0;
+        }
+        .ui-commodity-value {
+            text-align: right;
+        }
+        .ui-commodity-value h3 {
+            font-size: 1.2rem;
+            margin: 0;
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+        }
+        .ui-commodity-value p {
+            font-size: 0.7rem;
+            color: #4ade80;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            justify-content: flex-end;
+            font-weight: 600;
+        }
+        .ui-progress-bg {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        .ui-progress-fill {
+            height: 100%;
+            border-radius: 10px;
+            width: 0%;
+            transition: width 1.5s ease-out;
+        }
+        .ui-progress-fill.rice-fill {
+            background: linear-gradient(90deg, #ca8a04, #facc15);
+            width: 5%;
+        }
+        .ui-progress-fill.wheat-fill {
+            background: linear-gradient(90deg, #16a34a, #4ade80);
+            width: 5%;
+        }
+        .ui-stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .ui-stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+        .ui-stat-card:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .ui-stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+        }
+        .ui-stat-card.blue::before { background: linear-gradient(90deg, transparent, #3b82f6, transparent); }
+        .ui-stat-card.purple::before { background: linear-gradient(90deg, transparent, #a855f7, transparent); }
+        .ui-stat-card.green::before { background: linear-gradient(90deg, transparent, #22c55e, transparent); }
+        .ui-stat-card.orange::before { background: linear-gradient(90deg, transparent, #f97316, transparent); }
+        .ui-stat-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        .ui-stat-icon.blue { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+        .ui-stat-icon.purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+        .ui-stat-icon.green { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+        .ui-stat-icon.orange { background: rgba(249, 115, 22, 0.15); color: #fb923c; }
+        .ui-stat-value {
+            font-size: 1.3rem;
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+        }
+        .ui-stat-label {
+            font-size: 0.7rem;
+            color: #a1a1aa;
+            font-weight: 500;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 5px;
+        }
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+        .problem-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--text-dark);
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .card {
+            background: var(--bg-white);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            text-align: left;
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid var(--border);
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .impact-stat {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--accent);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .impact-stat p {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        .impact-stat .source {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            padding: 100px 0;
+            background-color: var(--bg-white);
+        }
+        .solution-section .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .solution-section h2 {
+            font-size: 2.5rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        .feature-item {
+            display: flex;
+            gap: 20px;
+            background: var(--bg-white);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .feature-item:hover {
+            border-color: var(--border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            transform: translateY(-4px);
+        }
+        .feature-icon {
+            font-size: 2rem;
+            background: var(--bg-light);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--primary);
+        }
+        .feature-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .feature-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .badge-soon {
+            font-size: 0.7rem;
+            background: var(--accent);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+            clip-path: polygon(0 5vw, 100% 0, 100% 100%, 0 100%);
+            margin-top: -5vw;
+            padding-top: calc(100px + 5vw);
+            position: relative;
+        }
+        .how-it-works h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+        }
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .steps-line {
+            position: absolute;
+            top: 25px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--border);
+            z-index: 1;
+        }
+        .steps-line-progress {
+            position: absolute;
+            top: 25px;
+            left: 10%;
+            height: 2px;
+            background: var(--primary);
+            width: 0;
+            transition: width 1.5s ease-out;
+            z-index: 2;
+        }
+        .step {
+            width: 22%;
+            position: relative;
+            z-index: 3;
+            text-align: center;
+        }
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin: 0 auto 20px;
+            transition: all 0.3s ease;
+        }
+        .step:hover .step-number {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+        .step h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        .step p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* SARTHAK Section */
+        .sarthak-section {
+            padding: 100px 0;
+            background-color: var(--bg-dark);
+            color: white;
+            text-align: center;
+            border-bottom: 5px solid var(--gold);
+            position: relative;
+        }
+        .sarthak-section h2 {
+            font-size: 2.2rem;
+            margin: 20px 0;
+        }
+        .sarthak-intro {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.05rem;
+        }
+        .sarthak-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .sarthak-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 12px;
+            border-top: 3px solid var(--gold);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+        .sarthak-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .sarthak-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        .sarthak-card p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .api-requests {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .api-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .api-badge::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        /* Social Proof Section */
+        .social-proof {
+            padding: 100px 0;
+            background-color: var(--bg-white);
+            text-align: center;
+        }
+        .social-proof h2 {
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+        }
+        .founder-card {
+            background: var(--bg-light);
+            padding: 50px;
+            border-radius: 16px;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            position: relative;
+            text-align: left;
+        }
+        .quote-icon {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            font-size: 5rem;
+            color: rgba(11, 61, 145, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+        .founder-card blockquote {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            padding-left: 20px;
+            font-style: italic;
+        }
+        .founder-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding-left: 20px;
+        }
+        .founder-avatar {
+            width: 60px;
+            height: 60px;
+            background: #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            text-align: center;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .founder-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        .founder-details p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .trust-badge {
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 12px;
+            width: 250px;
+            text-align: center;
+            background: var(--bg-white);
+            transition: transform 0.3s ease;
+        }
+        .trust-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .trust-badge h4 {
+            font-size: 1rem;
+            margin: 10px 0 5px;
+        }
+        .trust-badge p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+        .pricing-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .pricing-section > p {
+            color: var(--text-muted);
+            margin-bottom: 50px;
+        }
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .pricing-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            width: 350px;
+            text-align: left;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .pricing-card:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+        .pricing-card.pro {
+            background: var(--bg-white);
+            border: 2px solid var(--accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            transform: scale(1.05);
+        }
+        .pricing-card.pro:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+        .most-popular {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'Sora', sans-serif;
+            margin: 20px 0;
+            color: var(--text-dark);
+        }
+        .price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+        .pricing-features {
+            margin: 30px 0;
+        }
+        .pricing-features li {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            font-size: 0.95rem;
+        }
+        .pricing-features li::before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+        }
+        .pricing-card .btn {
+            width: 100%;
+        }
+        .pricing-note {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+            background-color: var(--bg-white);
+        }
+        .faq-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: 'Sora', sans-serif;
+            font-size: 1.1rem;
+        }
+        .faq-icon {
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+            color: var(--primary);
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: var(--text-muted);
+        }
+        .faq-answer-inner {
+            padding-top: 15px;
+            line-height: 1.6;
+            padding-right: 30px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .cta-section p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-meta {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 80px 0 20px;
+            font-size: 0.9rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        .footer-grid h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        .footer-links a:hover {
+            color: white;
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .sarthak-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem !important; }
+            h1 .hindi-text { font-size: 2rem !important; }
+            h2 { font-size: 2rem !important; }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: white;
+                flex-direction: column;
+                padding: 40px 20px;
+                transition: left 0.3s ease;
+                align-items: flex-start;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .nav-links .nav-link {
+                color: var(--text-dark);
+                font-size: 1.2rem;
+                border-bottom: 1px solid var(--border);
+                width: 100%;
+                padding-bottom: 15px;
+            }
+            .hamburger {
+                display: block;
+            }
+            nav.scrolled .hamburger {
+                color: var(--text-dark);
+            }
+            nav .hamburger {
+                color: white;
+            }
+            
+            .hero-ctas {
+                flex-direction: column;
+            }
+            .hero-stats {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .cards-grid, .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps-line { display: none; }
+            .steps-line-progress { display: none; }
+            .steps-container {
+                flex-direction: column;
+                gap: 40px;
+                padding-left: 20px;
+                border-left: 2px solid var(--border);
+                margin-left: 20px;
+            }
+            .step {
+                width: 100%;
+                text-align: left;
+                display: flex;
+                gap: 20px;
+            }
+            .step-number {
+                margin: 0;
+                flex-shrink: 0;
+                position: absolute;
+                left: -47px;
+                top: 0;
+            }
+            .step > div {
+                margin-left: 10px;
+            }
+            
+            .pricing-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            .pricing-card, .pricing-card.pro {
+                width: 100%;
+                max-width: 400px;
+            }
+            .pricing-card.pro {
+                transform: scale(1);
+                order: -1; /* Show Pro plan first on mobile */
+            }
+            .pricing-card.pro:hover {
+                transform: scale(1) translateY(-5px);
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <div class="logo-icon">R</div>
+                <span class="logo-text">Ration Shop Manager</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#why-us" class="nav-link">Why Us</a>
+                <a href="https://play.google.com/store/apps/details?id=com.rationshop.crm" class="btn btn-primary" target="_blank">Download Free</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <div class="hamburger-icon"></div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg-graphic"></div>
+        <div class="container">
+            <div class="hero-content reveal">
+                <div class="hero-badge">
+                    <span>🇮🇳</span> Aligned with SARTHAK-PDS Scheme — ₹25,530 Cr Govt Initiative
+                </div>
+                <h1>
+                    <span class="hindi-text">India का पहला</span>
+                    Ration Shop Management App
+                </h1>
+                <p>Built by an FPS dealer. For every FPS dealer in India. Stop manual registers. Stop inspection fears. Start running your shop digitally.</p>
+                <div class="hero-ctas">
+                    <a href="https://play.google.com/store/apps/details?id=com.rationshop.crm" class="btn btn-primary pulse-animation" target="_blank">▶ Download on Play Store</a>
+                    <a href="#how-it-works" class="btn btn-outline">Watch Demo</a>
+                </div>
+                
+                <div class="app-screenshot-placeholder">
+                    <div class="app-ui-container">
+                        <!-- Header -->
+                        <div class="ui-header">
+                            <div class="ui-header-title">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                                Analytics
+                            </div>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path></svg>
+                        </div>
+                        
+                        <!-- Main Entitlement Card -->
+                        <div class="ui-glass-panel">
+                            <div class="ui-entitlement-title">Monthly Entitlement</div>
+                            
+                            <!-- Rice -->
+                            <div class="ui-entitlement-row">
+                                <div class="ui-commodity">
+                                    <div class="ui-icon-glow rice">🌾</div>
+                                    <div class="ui-commodity-info">
+                                        <h4>Rice</h4>
+                                        <p>Allocated</p>
+                                    </div>
+                                </div>
+                                <div class="ui-commodity-value">
+                                    <h3>4,776 <span style="font-size:0.8rem; color:#a1a1aa;">kg</span></h3>
+                                    <p style="color: #a1a1aa;">239 kg Sold (5%)</p>
+                                </div>
+                            </div>
+                            <div class="ui-progress-bg" style="margin-bottom: 16px;">
+                                <div class="ui-progress-fill rice-fill"></div>
+                            </div>
+
+                            <!-- Wheat -->
+                            <div class="ui-entitlement-row">
+                                <div class="ui-commodity">
+                                    <div class="ui-icon-glow wheat">🍃</div>
+                                    <div class="ui-commodity-info">
+                                        <h4>Wheat</h4>
+                                        <p>Allocated</p>
+                                    </div>
+                                </div>
+                                <div class="ui-commodity-value">
+                                    <h3>7,125 <span style="font-size:0.8rem; color:#a1a1aa;">kg</span></h3>
+                                    <p style="color: #a1a1aa;">356 kg Sold (5%)</p>
+                                </div>
+                            </div>
+                            <div class="ui-progress-bg">
+                                <div class="ui-progress-fill wheat-fill"></div>
+                            </div>
+                        </div>
+
+                        <div class="ui-entitlement-title" style="margin-top: 8px;">Status Overview</div>
+                        
+                        <!-- 4 Grid Cards -->
+                        <div class="ui-stats-grid">
+                            <div class="ui-stat-card blue">
+                                <div class="ui-stat-icon blue">💳</div>
+                                <div class="ui-stat-value">554</div>
+                                <div class="ui-stat-label">Total Cards</div>
+                            </div>
+                            <div class="ui-stat-card purple">
+                                <div class="ui-stat-icon purple">👥</div>
+                                <div class="ui-stat-value">103</div>
+                                <div class="ui-stat-label">People Served</div>
+                            </div>
+                            <div class="ui-stat-card green">
+                                <div class="ui-stat-icon green">✓</div>
+                                <div class="ui-stat-value">5%</div>
+                                <div class="ui-stat-label">Total % Sold</div>
+                            </div>
+                            <div class="ui-stat-card orange">
+                                <div class="ui-stat-icon orange">⏱</div>
+                                <div class="ui-stat-value">528</div>
+                                <div class="ui-stat-label">Pending Cards</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3 class="counter" data-target="5.4" data-suffix=" Lakh+">0</h3>
+                        <p>FPS Dealers in India</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 class="counter" data-target="80" data-suffix=" Crore+">0</h3>
+                        <p>Beneficiaries Served by PDS</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 class="counter" data-target="25530" data-prefix="₹" data-suffix=" Cr">0</h3>
+                        <p>Govt SARTHAK Budget for PDS Modernization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section" id="why-us">
+        <div class="container reveal">
+            <span class="section-label">THE PROBLEM</span>
+            <h2 class="hindi-text">हर महीने यही झंझट? (Same trouble every month?)</h2>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">📋</div>
+                    <h3>Manual Stock Registers</h3>
+                    <p>Every transaction recorded by hand. One mistake = inspection penalty. Dealers lose lakhs due to stock mismatches during government audits.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">👥</div>
+                    <h3>Missing Beneficiaries</h3>
+                    <p>No way to know who collected ration and who didn't. Unclaimed stock, wasted trips, angry customers — every single month.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📝</div>
+                    <h3>Writer Dependency & Fraud</h3>
+                    <p>Hired writers control your records. Data manipulation goes undetected. Your own shop's data is not in your hands.</p>
+                </div>
+            </div>
+            
+            <div class="impact-stat">
+                <p>28% of India's distributed food grains are lost to leakage and mismanagement every year.<br>8.51 crore beneficiaries flagged as inactive or non-collecting.</p>
+                <span class="source">— Source: Government of India PDS Data</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section" id="features">
+        <div class="container reveal">
+            <div class="section-header">
+                <span class="section-label">THE SOLUTION</span>
+                <h2>Ration Shop Manager automates everything</h2>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🔄</div>
+                    <div class="feature-content">
+                        <h3>Real-time PDS portal integration</h3>
+                        <p>Your app automatically retrieves live beneficiary data, transaction records, and stock allocations from government PDS portals — every 30 minutes. No manual entry. No errors.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📦</div>
+                    <div class="feature-content">
+                        <h3>Stock register updates itself</h3>
+                        <p>As distributions happen, your digital stock book updates automatically. Be 100% inspection-ready without lifting a pen.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">👆</div>
+                    <div class="feature-content">
+                        <h3>Onboard your entire shop in minutes <span class="badge-soon">Coming Soon</span></h3>
+                        <p>Import all 700 beneficiary cards automatically. What used to take days of manual entry now takes one tap.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔍</div>
+                    <div class="feature-content">
+                        <h3>Verify any ration card instantly</h3>
+                        <p>Search any RC number — get full member details, entitlement, and 3-month transaction history in seconds.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-content">
+                        <h3>Reach pending beneficiaries directly</h3>
+                        <p>See exactly who hasn't collected their ration. Send WhatsApp reminders with one tap — without saving numbers.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🛡️</div>
+                    <div class="feature-content">
+                        <h3>Zero inspection fear</h3>
+                        <p>Digital records, auto stock updates, and complete transaction logs mean you're always ready for any government inspection.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container reveal">
+            <h2 class="hindi-text">कैसे काम करता है? (How does it work?)</h2>
+            
+            <div class="steps-container" id="stepsContainer">
+                <div class="steps-line"></div>
+                <div class="steps-line-progress" id="stepsProgress"></div>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h3>Download & Setup</h3>
+                        <p>Install the app, enter your FPS shop code. Setup takes under 5 minutes.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h3>Auto-Sync Activates</h3>
+                        <p>App connects to government PDS portals. All your beneficiary data loads automatically.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h3>Manage Daily Distribution</h3>
+                        <p>Mark collections, check pending cards, verify beneficiaries — all from your phone.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div>
+                        <h3>Stay Inspection-Ready</h3>
+                        <p>Auto stock register, digital audit trail, instant reports — always compliant.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SARTHAK Section -->
+    <section class="sarthak-section">
+        <div class="container reveal">
+            <div class="hero-badge" style="background: rgba(255,255,255,0.1); border-color: var(--gold); color: var(--gold);">
+                🏛️ Government of India Initiative
+            </div>
+            <h2>Built for India's ₹25,530 Crore PDS Modernization Mission</h2>
+            <div class="sarthak-intro">
+                <p>The Cabinet Committee on Economic Affairs, chaired by PM Modi, approved the SARTHAK-PDS scheme on May 27, 2026 — a ₹25,530 crore initiative to modernize India's Public Distribution System through AI, automation, and real-time technology running until March 2031.</p>
+                <br>
+                <p>Ration Shop Manager is India's only private-sector dealer management platform fully aligned with SARTHAK-PDS objectives — delivering automation directly to the hands of 5.4 lakh FPS dealers at the last mile.</p>
+            </div>
+            
+            <div class="sarthak-cards">
+                <div class="sarthak-card">
+                    <div class="card-icon">🤖</div>
+                    <h3>NIRMAL Module Alignment</h3>
+                    <p>Ration Shop Manager's RC verification and live sync helps identify and flag inactive or duplicate beneficiary accounts — directly supporting NIRMAL's fraud detection objectives.</p>
+                </div>
+                <div class="sarthak-card">
+                    <div class="card-icon">📊</div>
+                    <h3>SAKSHAM Module Alignment</h3>
+                    <p>Real-time stock tracking and distribution data from every FPS dealer feeds into supply chain visibility — supporting SAKSHAM's real-time logistics optimization goals.</p>
+                </div>
+                <div class="sarthak-card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Mandatory Dealer Automation</h3>
+                    <p>SARTHAK-PDS mandates automation frameworks for FPS dealers. Ration Shop Manager is ready — live, tested, and deployed — the only private product built specifically for this mandate.</p>
+                </div>
+            </div>
+            
+            <p style="color: rgba(255,255,255,0.7); margin-bottom: 15px; font-size: 0.9rem;">Formal API integration request submitted to:</p>
+            <div class="api-requests">
+                <span class="api-badge">Maharashtra Food & Civil Supplies Department</span>
+                <span class="api-badge">NIC New Delhi</span>
+                <span class="api-badge">DFPD Ministry</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof">
+        <div class="container reveal">
+            <h2>Trusted by FPS Dealers Across Maharashtra</h2>
+            
+            <div class="founder-card">
+                <div class="quote-icon">"</div>
+                <blockquote>I run a Fair Price Shop in Maharashtra. I built this app for myself because no tool existed. When it solved my problems, I knew every dealer in India needed it.</blockquote>
+                <div class="founder-info">
+                    <div class="founder-avatar">
+                        FOUNDER<br>PHOTO
+                    </div>
+                    <div class="founder-details">
+                        <h4>Ramkrishna Pawar, Founder & CEO</h4>
+                        <p>Active FPS Dealer | Tydon Technologies Pvt. Ltd.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <div class="card-icon">🏢</div>
+                    <h4>Registered Company</h4>
+                    <p>Tydon Technologies Pvt. Ltd.<br>CIN: U62090PN2025PTC246844</p>
+                </div>
+                <div class="trust-badge">
+                    <div class="card-icon">📱</div>
+                    <h4>Live on Play Store</h4>
+                    <p>Google Play Store<br>100+ Downloads</p>
+                </div>
+                <div class="trust-badge">
+                    <div class="card-icon">🇮🇳</div>
+                    <h4>Made in India</h4>
+                    <p>For Indian FPS Dealers<br>Serving Maharashtra</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container reveal">
+            <h2>Simple, Affordable Pricing</h2>
+            <p>Less than the cost of a writer. More reliable than any paper register.</p>
+            
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Basic Plan</h3>
+                    <div class="price">₹0 <span>/ month</span></div>
+                    <ul class="pricing-features">
+                        <li>Manual beneficiary entry</li>
+                        <li>Basic stock tracking</li>
+                        <li>Distribution marking</li>
+                        <li>Up to 100 cards</li>
+                    </ul>
+                    <a href="https://play.google.com/store/apps/details?id=com.rationshop.crm" class="btn btn-outline-dark" target="_blank">Download Free</a>
+                </div>
+                <div class="pricing-card pro">
+                    <div class="most-popular">Most Popular</div>
+                    <h3>Pro Plan</h3>
+                    <div class="price">₹199 <span>/ month</span></div>
+                    <ul class="pricing-features">
+                        <li>Everything in Free</li>
+                        <li>Live PDS portal sync (auto)</li>
+                        <li>Bulk import 700 cards</li>
+                        <li>WhatsApp reminders</li>
+                        <li>Detailed reports & audit trail</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="https://play.google.com/store/apps/details?id=com.rationshop.crm" class="btn btn-primary" target="_blank">Start Free Trial</a>
+                </div>
+            </div>
+            <p class="pricing-note">No contracts. Cancel anytime. Your data is always yours.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container reveal">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is this app affiliated with the government?
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            No. Ration Shop Manager is a private product by Tydon Technologies Pvt. Ltd. It is not affiliated with any government body. We have submitted a formal API request to the Maharashtra Food Department and NIC for official data integration.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How does the app get my shop's data?
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            The app uses your FPS shop code to retrieve data from publicly accessible government PDS portals — the same data visible on IMPDS and ePoS websites. We are working toward official API integration with government approval.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is my data safe?
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Yes. All data is encrypted in transit and stored securely on Microsoft Azure servers in India. Your data is never shared with third parties.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Does the app work in Marathi and Hindi?
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Hindi and Marathi support is on our roadmap. Current version is in English with simple, easy-to-understand interface designed for FPS dealers.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What if the government portal changes?
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Our technical team monitors portal changes and updates the app immediately. We are actively pursuing official API access for long-term stability.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download CTA Section -->
+    <section class="cta-section">
+        <div class="container reveal">
+            <h2 class="hindi-text">अपनी दुकान को digital बनाइए आज।<br><span style="font-size: 1.5rem; font-family: 'Sora', sans-serif; display: block; margin-top: 10px; font-weight: 600;">(Make your shop digital today.)</span></h2>
+            <p>Join FPS dealers across Maharashtra who have replaced paper registers with Ration Shop Manager. Free to download. Free to start.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.rationshop.crm" class="btn btn-outline" style="background: white; color: var(--primary); font-size: 1.1rem;" target="_blank">▶ Download on Google Play Store</a>
+            <p class="cta-meta">📱 Android | Free Download | 100+ Dealers Already Using It</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>Tydon Technologies Private Limited</h4>
+                    <p>CIN: U62090PN2025PTC246844<br>Manchar, Ambegaon, Pune - 410503, Maharashtra</p>
+                </div>
+                <div>
+                    <h4>Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:founder@tydontech.com">founder@tydontech.com</a></li>
+                        <li><a href="tel:+917744939966">+91 77449 39966</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Tydon Technologies Private Limited. All rights reserved.<br>Made with ❤️ in India for India's FPS Dealers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sticky Navbar
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    // Trigger step connector animation when how-it-works section is revealed
+                    if (entry.target.closest('#how-it-works')) {
+                        setTimeout(() => {
+                            const progressLine = document.getElementById('stepsProgress');
+                            if (progressLine) {
+                                // Account for 10% left padding in mobile vs desktop
+                                progressLine.style.width = '80%';
+                            }
+                        }, 300);
+                    }
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const targetValue = parseFloat(target.getAttribute('data-target'));
+                    const prefix = target.getAttribute('data-prefix') || '';
+                    const suffix = target.getAttribute('data-suffix') || '';
+                    
+                    let current = 0;
+                    const duration = 2000;
+                    const stepTime = 16; // roughly 60fps
+                    const totalSteps = duration / stepTime;
+                    const increment = targetValue / totalSteps;
+                    
+                    const updateCounter = () => {
+                        if (current < targetValue) {
+                            current += increment;
+                            if (current > targetValue) current = targetValue;
+                            
+                            // Format number based on whether target is an integer or float
+                            const displayValue = targetValue % 1 === 0 ? 
+                                Math.floor(current).toLocaleString('en-IN') : 
+                                current.toFixed(1);
+                                
+                            target.innerText = prefix + displayValue + suffix;
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            const finalValue = targetValue % 1 === 0 ? 
+                                targetValue.toLocaleString('en-IN') : 
+                                targetValue.toFixed(1);
+                            target.innerText = prefix + finalValue + suffix;
+                        }
+                    };
+                    
+                    updateCounter();
+                    observer.unobserve(target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all other FAQs
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                    otherItem.querySelector('.faq-icon').textContent = '+';
+                });
+                
+                // Toggle current FAQ
+                if (!isActive) {
+                    item.classList.add('active');
+                    const answer = item.querySelector('.faq-answer');
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                    item.querySelector('.faq-icon').textContent = '×';
+                }
+            });
+        });
+
+        // Smooth Scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerOffset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
